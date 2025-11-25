@@ -1,0 +1,170 @@
+[
+  {
+    "model": "core.teammember",
+    "pk": 1,
+    "fields": {
+      "name": "Похоренко Марина Константиновна",
+      "position": "Концептуальный директор",
+      "description": "Специалист отдела молодёжной политики СурГУ",
+      "photo": "team_photos/proh.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.teammember",
+    "pk": 2,
+    "fields": {
+      "name": "Шатон Юлия Борисовна",
+      "position": "Руководитель, научный эксперт",
+      "description": "Директор музейно-выставочного комплекса УрФУ",
+      "photo": "team_photos/shaton.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.teammember",
+    "pk": 3,
+    "fields": {
+      "name": "Шаров Вячеслав Александрович",
+      "position": "Менеджер",
+      "description": "Студент УрФУ имени Б.Н. Ельцина",
+      "photo": "team_photos/sharov.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.teammember",
+    "pk": 4,
+    "fields": {
+      "name": "Ломаева Дарья Сергеевна",
+      "position": "Специалист по работе с партнёрами",
+      "description": "Директор волонтёрского центра «Волонтёры Урала»",
+      "photo": "team_photos/lom.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.teammember",
+    "pk": 5,
+    "fields": {
+      "name": "Чудинова Мария Александровна",
+      "position": "Специалист по работе с участниками",
+      "description": "Студент РТУ МИРЭА",
+      "photo": "team_photos/chud.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.teammember",
+    "pk": 6,
+    "fields": {
+      "name": "Пантелеева Анастасия Сергеевна",
+      "position": "Специалист по медиасопровождению",
+      "description": "Студент ВятГУ",
+      "photo": "team_photos/pant.png",
+      "social_link": "https://vk.com/"
+    }
+  },
+  {
+    "model": "core.newsarticle",
+    "pk": 1,
+    "fields": {
+      "title": "5 РЕГИОНОВ РОССИЙСКОЙ ФЕДЕРАЦИИ",
+      "summary": "Проект 'Та САМАЯ Россия' расширяет свою географию, охватывая новые регионы и открывая уникальные исторические маршруты.",
+      "image": "news_images/new1.png",
+      "published_date": "2025-11-25T12:00:00Z"
+    }
+  },
+  {
+    "model": "core.newsarticle",
+    "pk": 2,
+    "fields": {
+      "title": "Проекты объединились в международный кластер",
+      "summary": "Ключевые исторические проекты объединили усилия для создания международного кластера, нацеленного на сохранение общего наследия.",
+      "image": "news_images/new2.png",
+      "published_date": "2025-11-24T12:00:00Z"
+    }
+  },
+  {
+    "model": "core.newsarticle",
+    "pk": 3,
+    "fields": {
+      "title": "Прямой эфир 'Брестская крепость'",
+      "summary": "Состоялся прямой эфир, посвященный героической обороне Брестской крепости, с участием ведущих историков и экспертов.",
+      "image": "news_images/new3.png",
+      "published_date": "2025-11-23T12:00:00Z"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 1,
+    "fields": {
+      "name": "Брестская крепость",
+      "link": "#",
+      "image": "partner_logos/partner_1.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 2,
+    "fields": {
+      "name": "Питер",
+      "link": "#",
+      "image": "partner_logos/partner_2.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 3,
+    "fields": {
+      "name": "УрФУ",
+      "link": "#",
+      "image": "partner_logos/partner_3.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 4,
+    "fields": {
+      "name": "Звезда",
+      "link": "#",
+      "image": "partner_logos/partner_4.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 5,
+    "fields": {
+      "name": "Музей",
+      "link": "#",
+      "image": "partner_logos/partner_5.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 6,
+    "fields": {
+      "name": "Газпром",
+      "link": "#",
+      "image": "partner_logos/partner_6.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 7,
+    "fields": {
+      "name": "Газпром 2",
+      "link": "#",
+      "image": "partner_logos/partner_7.png"
+    }
+  },
+  {
+    "model": "core.partner",
+    "pk": 8,
+    "fields": {
+      "name": "1920",
+      "link": "#",
+      "image": "partner_logos/partner_8.png"
+    }
+  }
+]

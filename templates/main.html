@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<header class="main-header" data-page-type="{{ page_type }}">
+    <nav class="main-nav">
+        <img id="header-logo" class="logo" src="{% static 'img/logo_white(1).png' %}" alt="Логотип" width="115" height="112">
+        <section class="navbar">
+            <div class="burger-menu" id="burgerMenu">
+                <img id="burger-icon" src="{% static 'img/menu.png' %}" width="50" height="40">
+            </div>
+            <ul class="site-navigation" id="navMenu">
+                <li class="menu-close" id="menuClose">
+                    <img src="{% static 'img/close.png' %}" alt="Закрыть">
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'main' %}">Главная</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'team' %}">Команда проекта</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'news' %}">Новости</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'history_lines' %}">Исторические линии</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'partner' %}">Партнёры</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Интерактивная карта</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+    <h1 id="page-title" class="title">Та САМАЯ Россия</h1>
+    <p id="page-subtitle" class="title-text">Кластер международных исторических проектов</p>
+    <p id="page-down-arrow" class="down"><a href="#"><img src="{% static 'img/down.png' %}" alt="Стрелка" width="54" height="26"></a></p>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h2>О проекте</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p>Та САМАЯ Россия - это проект, направленный на сохранение и трансляцию исторического наследия Российской Федерации в формате виртуальных экскурсий из музейно-выставочных комплексов России и стран СНГ</p>
+            <p><a href="{% url 'team' %}">Команда проекта</a></p>
+        </div>
+        <img src="{% static 'img/photo.png' %}" alt="Фото проекта" width="630" height="426">
+    </div>
+</section>
+<section class="news">
+    <h2>Новости</h2>
+    <ul class="news-list">
+        {% for article in latest_news %}
+        <li class="news-list-item">
+            <img src="{{ article.image.url }}" width="326px" height="184px">
+            <p>{{ article.title }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'news' %}">Все новости</a></p>
+</section>
+<section class="history">
+    <h2>Исторические линии проекта</h2>
+    <ul class="history-list">
+        <li class="history-list-item">
+            <img src="{% static 'img/line1.png' %}" alt="Нефть">
+            <h3>Та САМАЯ <span><br>нефть</span></h3>
+            <p>Рассказывает о истории открытия нефти в Западной Сибири в 60-х годах геологами во главе с Ф.К. Салмановым</p>
+            <p>Реализован в 2021-2023 годах</p>
+            <p>Российская Федерация, Республика Азербайджан</p>
+        </li>
+        <li class="history-list-item">
+            <img src="{% static 'img/line2.png' %}" alt="звезда">
+            <h3>Те САМЫЕ <span><br>Города-герои</span></h3>
+            <p>Рассказывает о городах, удостоенных высшему званию "Город-герой" в годы Великой Отечественной войны</p>
+            <p>Реализуется с 2025 года</p>
+            <p>Российская Федерация, Республика Беларусь</p>
+        </li>
+        <li class="history-list-item">
+            <img src="{% static 'img/line3.png' %}" alt="Ракета">
+            <h3>Тот САМЫЙ <span><br>полёт</span></h3>
+            <p>Рассказывает о людях и событиях, благодаря которым осуществился первый полёт человека в космос</p>
+            <p>Будет реализован в 2026 году</p>
+            <p>Российская Федерация, Республика Казахстан</p>
+
+        </li>
+    </ul>
+</section>
+<section class="partner">
+    <h2>Партнёры</h2>
+    <ul class="partner-list">
+        {% for partner in partners %}
+        <li class="partner-list-item">
+            <a href="{{ partner.link }}" target="_blank"><img src="{{ partner.image.url }}" alt="{{ partner.name }}"></a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

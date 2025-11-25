@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link href="{% static 'css/team.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+<header data-page-type="{{ page_type }}">
+    <nav class="main-nav">
+        <img id="header-logo" class="logo"  src="{% static 'img/logo_blue.png' %}" alt="Логотип">
+        <section class="main-title">
+            <h1 id="page-title">Команда проекта</h1>
+            <p>Те люди, которые создают "Ту САМУЮ Россию"</p>
+        </section>
+        <section class="navbar">
+            <div class="burger-menu" id="burgerMenu">
+                <img id="burger-icon" src="{% static 'img/menu_blue.png' %}" width="50" height="40">
+            </div>
+            <ul class="site-navigation" id="navMenu">
+                <li class="menu-close" id="menuClose">
+                    <img src="{% static 'img/close.png' %}" alt="Закрыть">
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'main' %}">Главная</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'team' %}">Команда проекта</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'news' %}">Новости</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Исторические линии</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Партнёры</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Контакты</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Интерактивная карта</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="team-list-wrapper">
+<ul class="team-list">
+    {% for member in members %}
+    <li class="team-list-item">
+         <img class="team-photo" src="{{ member.photo.url }}" alt="{{ member.name }}">
+         <h3>{{ member.name|linebreaksbr }}</h3>
+         <p class="post">{{ member.position }}</p>
+         <p class="post-about">{{ member.description }}</p>
+         <a href="{{ member.social_link }}" target="_blank"><img src="{% static 'img/vk_blue.png' %}" alt="vk"></a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

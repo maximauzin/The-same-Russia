@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+    <title>Та самая Россия</title>
+  </head>
+<body data-page-type="{{ page_type|default:'main' }}">
+    <header id="sticky-header">
+        <img class="logo" src="{% static 'img/logo_white_3.png' %}" alt="Логотип">
+        <div class="burger-menu" id="stickyBurgerMenu">
+            <img src="{% static 'img/menu.png' %}" width="50" height="40">
+        </div>
+    </header>
+
+    <div id="header-container" class="transition-fade">
+        {% block header %}
+        {% endblock %}
+    </div>
+
+    <main id="content-container" class="transition-fade">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="main-footer">
+        <img class="footer-logo" src="{% static 'img/logo_white(1).png' %}" alt="Логотип футер" width="437px" height="324px">
+        <p><a href="tel:+79226588563">+7 (922) 658-85-63</a></p>
+        <p><a href="mailto:volural@gmail.com">volural@gmail.com</a></p>
+        <div class="footer-social">
+            <img src="{% static 'img/vk.png' %}" alt="VK">
+            <img src="{% static 'img/tg.png' %}" alt="Telegram">
+        </div>
+        <p class="adress">Юридический адрес:<br>Главный учебный корпус УрФУ:<br>620062, Свердловская область, г.Екатеринбург, ул.Мира, д.19</p>
+    </footer>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body></html>

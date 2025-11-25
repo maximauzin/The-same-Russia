@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}<header data-page-type="{{ page_type }}"><nav class="main-nav"><img id="header-logo" class="logo"  src="{% static 'img/logo_red.png' %}" alt="Логотип" width="115" height="112"><h1 id="page-title">Новости</h1>
+        <section class="navbar">
+            <div class="burger-menu" id="burgerMenu">
+                <img id="burger-icon" src="{% static 'img/menu_red.png' %}" width="50" height="40">
+            </div>
+            <ul class="site-navigation" id="navMenu">
+                <li class="menu-close" id="menuClose">
+                    <img src="{% static 'img/close.png' %}" alt="Закрыть">
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'main' %}">Главная</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'team' %}">Команда проекта</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'news' %}">Новости</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'history_lines' %}">Исторические линии</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'partner' %}">Партнёры</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                </li>
+                <li class="site-navigation-item">
+                    <a href="#">Интерактивная карта</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="new">
+    {% for article in page_obj %}
+    <div class="new-content">
+        <img src="{{ article.image.url }}" alt="{{ article.title }}">
+        <div class="new-text">
+            <a href="#"><h2>{{ article.title }}</h2></a>
+            <p>{{ article.summary }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<section class="slide">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">
+            <button type="button"><img src="{% static 'img/left.png' %}" alt="Стрелка влево"></button>
+        </a>
+    {% else %}
+        <button type="button" class="disabled" disabled><img src="{% static 'img/left.png' %}" alt="Стрелка влево"></button>
+    {% endif %}
+
+    <p>{{ page_obj.number }}</p>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">
+            <button type="button"><img src="{% static 'img/rigth.png' %}" alt="Стрелка вправо"></button>
+        </a>
+    {% else %}
+        <button type="button" class="disabled" disabled><img src="{% static 'img/rigth.png' %}" alt="Стрелка вправо"></button>
+    {% endif %}
+</section>
+{% endblock %}
