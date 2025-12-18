@@ -1,0 +1,60 @@
+body {
+    font-family: "Exo 2", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: rgba(40, 54, 135, 1);
+    margin: 0;
+    padding: 0;
+    font-size: 96px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 38px;
+}
+
+.burger-menu img {
+    padding-top: 38px;
+}
+
+.contacts {
+    margin: 0;
+    padding: 0 80px;
+    display: flex;
+    column-gap: 39px;
+    margin-bottom: 151px;
+}
+
+.contacts a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+.contacts-content p {
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.contacts-content-text {
+    display: flex;
+    column-gap: 22px;
+    margin-bottom: 28px;
+}
+
+.contacts-content-text:first-child {
+    padding-top: 26px;
+}
+
+.social-content {
+    margin-top: 33px;
+    display: flex;
+    column-gap: 30px;
+}
+
+

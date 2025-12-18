@@ -1,0 +1,19 @@
+{% load static %}
+<ul class="site-navigation" id="navMenu">
+    <li class="menu-close" id="menuClose">
+        <img src="{% static 'img/close.png' %}" alt="Закрыть">
+    </li>
+    <li class="site-navigation-item"><a href="{% url 'home' %}">Главная</a></li>
+    <li class="site-navigation-item"><a href="{% url 'team' %}">Команда проекта</a></li>
+    <li class="site-navigation-item"><a href="{% url 'news' %}">Новости</a></li>
+    <li class="site-navigation-item"><a href="{% url 'history' %}">Исторические линии</a></li>
+    <li class="site-navigation-item"><a href="{% url 'partners' %}">Партнёры</a></li>
+    <li class="site-navigation-item"><a href="{% url 'contacts' %}">Контакты</a></li>
+    <li class="site-navigation-item"><a href="#">Интерактивная карта</a></li>
+    
+    {% if user.is_staff %}
+    <li class="site-navigation-item" style="margin-top: 20px; border-top: 2px solid rgba(255,0,0,0.5);">
+        <a href="{% url 'logout' %}" style="color: #780001;">Выход (Админ)</a>
+    </li>
+    {% endif %}
+</ul>

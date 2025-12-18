@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Партнёры (Админ){% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/partner.css' %}" rel="stylesheet">
+<style>
+    .plus { display: block; background: none; border: none; cursor: pointer; margin: 0 auto; margin-bottom: 20px; }
+    .edit-tools { display: flex; gap: 5px; justify-content: center; margin-top: 5px; }
+</style>
+{% endblock %}
+
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Партнёры</h1>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+        <a href="{% url 'partner_add' %}" class="plus">
+            <img src="{% static 'img/plus.png' %}" width="100" height="100" alt="Добавить">
+        </a>
+    </div>
+    
+    <section class="partner">
+        {% for partner in partners %}
+        <div class="partner-content" style="position: relative;">
+            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" style="width: 150px; height: 100px; object-fit: contain;">
+            <p>{{ partner.name }}</p>
+            <div class="edit-tools" style="position: absolute; top: 0; right: 0; display: flex; flex-direction: column; gap: 5px; z-index: 10;">
+                <a href="{% url 'partner_edit' partner.pk %}" class="admin-icon-link">
+                    <img src="{% static 'img/edit.png' %}" class="admin-icon">
+                </a>
+                <a href="{% url 'partner_delete' partner.pk %}" onclick="return confirm('Удалить?');" class="admin-icon-link">
+                    <img src="{% static 'img/close.png' %}" class="admin-icon" style="filter: brightness(0) !important;">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

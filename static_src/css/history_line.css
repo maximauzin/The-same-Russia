@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+h1 {
+    font-family: "Exo 2", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    margin-bottom: 80px;
+    margin-top: -140px;
+}
+
+p {
+    font-size: 20px;
+}
+
+main {
+    margin: 0;
+    padding: 0 93px;
+}
+
+main img {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+.black {
+    text-align: center;
+    margin-bottom: 51px;
+}
+
+span {
+    display: inline-block;
+    width: 100%;
+    border: 3px solid rgba(40, 54, 135, 1);
+    margin-bottom: 51px;
+}
+
+.blue {
+    text-align: center;
+    margin-bottom: 51px;
+    color: rgba(40, 54, 135, 1);
+}

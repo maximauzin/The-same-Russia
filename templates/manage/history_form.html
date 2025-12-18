@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование линии{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/history_lines.css' %}" rel="stylesheet">
+<style>
+    .forms input[type="text"], .forms textarea {
+        border: 3px solid #669BBD;
+        border-radius: 10px;
+        padding: 15px;
+        width: 100%;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+</style>
+{% endblock %}
+
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Исторические линии</h1>
+{% endblock %}
+
+{% block content %}
+<main> 
+    <div class="forms">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="forms-content">
+                <div class="forms-image">
+                    <label for="id_image">Фото</label>
+                    {{ form.image }}
+                    {{ form.description }}
+                </div>
+            </div>
+            
+            <img class="line" src="{% static 'img/volna_up.png' %}" style="width: 100%; margin: 20px 0;">
+            
+            <div class="forms-content-about">
+                <label>Название направления</label>
+                {{ form.title }}
+                <label>Годы реализации</label>
+                {{ form.years }}
+                <label>География</label>
+                {{ form.location }}
+            </div>
+
+            <div class="button">
+                <a href="{% url 'history' %}" class="btn-reset" style="text-decoration: none;">Отмена</a>
+                <button type="submit" class="btn-submit">Опубликовать</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

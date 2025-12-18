@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 96px;
+    color: rgba(40, 54, 135, 1);
+    font-family: "Exo 2", sans-serif;
+    text-align: center;
+}
+
+.logo {
+    margin: 0;
+    padding: 0;
+    padding-top: 38px;
+}
+
+.burger-menu img {
+    padding-top: 38px;
+}
+
+.partner {
+    margin: 0;
+    padding: 0 251px;
+}
+
+.partner-content {
+    display: flex;
+    margin: 0;
+    padding: 0 30px;
+    border: 3px solid rgba(40, 54, 135, 1);
+    border-radius: 10px;
+    font-size: 36px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.partner-content p {
+    width: 506px;
+}
+
+.forms {
+    display: flex;
+    margin: 0;
+    padding: 0 169px;
+    justify-content: space-between;
+    margin-bottom: 82px;
+}
+
+.forms #image {
+    width: 250px;
+    height: 250px;
+    border: 3px solid #283687;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    margin-right: 80px;
+}
+
+.forms-content input {
+    margin: 0;
+    padding: 21px 27px;
+    color: black;
+    border: 3px solid #283687;
+    border-radius: 10px;
+    width: 772px;
+    font-size: 32px;
+}
+
+.forms-content #name {
+    margin-bottom: 50px;
+}

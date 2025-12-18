@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Добавление партнёра{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/partner.css' %}" rel="stylesheet">
+<style>
+    .forms input[type="text"] {
+        border: 3px solid #669BBD;
+        border-radius: 10px;
+        padding: 15px;
+        width: 100%;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+</style>
+{% endblock %}
+
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Партнёры</h1>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="forms">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_logo">Логотип</label>
+            {{ form.logo }}
+            
+            <div class="forms-content" style="margin-top: 20px;">
+                <label>Название организации</label>
+                {{ form.name }}
+                <label>Ссылка на сайт</label>
+                {{ form.url }}
+            </div>
+
+            <div class="button">
+                <a href="{% url 'partners' %}" class="btn-reset" style="text-decoration: none;">Отмена</a>
+                <button type="submit" class="btn-submit">Опубликовать</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

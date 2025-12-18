@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Редактирование{% else %}Создание{% endif %} новости{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+<style>
+    .forms {
+        margin: 0 auto;
+        width: 650px;
+    }
+    
+    #news-content {
+        border: 3px solid #780001;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        min-height: 200px;
+    }
+    #id_short_description {
+        border: 3px solid #780001;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        min-height: 100px;
+    }
+
+    .forms input[type="text"] {
+        border: 3px solid #780001;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Красивая кнопка загрузки */
+    .custom-file-upload {
+        border: 3px solid #780001;
+        border-radius: 10px;
+        display: block;
+        padding: 15px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        color: #780001;
+        font-size: 24px;
+        text-align: center;
+        background: #fff;
+        transition: background 0.3s;
+    }
+    .custom-file-upload:hover { background: #f9f9f9; }
+    
+    input[type="file"] {
+        /* Важно: не прячем инпут для обложки, только для галереи */
+        display: block; 
+    }
+    #id_photos { display: none; } /* Скрываем инпут для галереи */
+
+    /* Предпросмотр фото */
+    .preview-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+        border: 2px dashed #ccc;
+        padding: 10px;
+    }
+    .preview-item {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border: 2px solid #780001;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: grab;
+        background-color: #f0f0f0;
+    }
+    .preview-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .preview-controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(120, 0, 1, 0.7);
+        color: white;
+        padding: 2px 5px;
+        font-size: 12px;
+        border-bottom-left-radius: 5px;
+    }
+    .preview-item.dragging { opacity: 0.5; border: 2px solid blue; }
+    
+    /* Выбор стиля */
+    .style-selector {
+        margin-bottom: 30px;
+        font-size: 20px;
+        color: #780001;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .style-selector span {
+        font-weight: bold;
+    }
+    .style-selector label {
+        margin-right: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .style-selector input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #780001;
+        border-radius: 50%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+    }
+    .style-selector input[type="radio"]:checked::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: #780001;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Кнопки управления по краям textarea */
+    .form-buttons-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .form-buttons-container .btn-reset,
+    .form-buttons-container .btn-submit {
+        padding: 0 30px;
+        font-size: 24px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin: 0;
+    }
+</style>
+{% endblock %}
+
+{% block header_logo %}logo_red.png{% endblock %}
+{% block burger_icon %}menu_red.png{% endblock %}
+
+{% block nav_title %}
+<h1>{% if form.instance.pk %}Редактирование{% else %}Создание{% endif %} новости</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="forms">
+        <form method="post" enctype="multipart/form-data" id="news-form">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div style="color: red; margin-bottom: 20px;">{{ form.errors }}</div>
+            {% endif %}
+
+            <div>{{ form.title }}</div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="id_short_description">Краткое описание:</label>
+                {{ form.short_description }}
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="news-content">Основной текст:</label>
+                {{ form.main_content }}
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="id_image">Обложка новости:</label>
+                {{ form.image }}
+                {% if form.instance.image %}
+                    <p style="margin-top: 10px;">Текущая обложка: <br><img src="{{ form.instance.image.url }}" height="100"></p>
+                {% endif %}
+            </div>
+
+            <div class="style-selector">
+                <span>Отображение галереи:</span>
+                {% for radio in form.display_style %}
+                    <label for="{{ radio.id_for_label }}">
+                        {{ radio.tag }} {{ radio.label }}
+                    </label>
+                {% endfor %}
+            </div>
+
+            <label for="id_photos" class="custom-file-upload">Добавить фотографии в галерею +</label>
+            <input type="file" name="photos" id="id_photos" multiple accept="image/*">
+
+            <div class="preview-container" id="preview-container">
+                {# Сюда JS добавит превью выбранных фото #}
+                {% if form.instance.pk %}
+                    {% for img in form.instance.images.all %}
+                    <div class="preview-item" draggable="true" data-id="{{ img.pk }}">
+                        <img src="{{ img.image.url }}">
+                        <div class="preview-controls">
+                            <button type="button" class="del-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 16px;">×</button>
+                        </div>
+                        {# Скрытые инпуты для отправки порядка #}
+                        <input type="hidden" name="existing_order[]" value="{{ img.pk }}">
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-buttons-container">
+                <a href="{% url 'news' %}" class="btn-reset" style="text-decoration: none;">Отмена</a>
+                <button type="submit" class="btn-submit">Опубликовать</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const photosInput = document.getElementById('id_photos');
+            const previewContainer = document.getElementById('preview-container');
+            const newsForm = document.getElementById('news-form');
+
+            let draggedItem = null;
+
+            function updateOrderInputs() {
+                // Удаляем старые инпуты порядка
+                newsForm.querySelectorAll('input[name="existing_order[]"]').forEach(input => input.remove());
+                newsForm.querySelectorAll('input[name="new_files_order[]"]').forEach(input => input.remove());
+
+                // Добавляем новые в текущем порядке
+                const items = Array.from(previewContainer.querySelectorAll('.preview-item'));
+                items.forEach((item, index) => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    if (item.dataset.id) {
+                        input.name = 'existing_order[]';
+                        input.value = item.dataset.id;
+                    } else {
+                        input.name = `new_files_order[]`; 
+                        input.value = item.dataset.tempId; // Используем временный ID для новых файлов
+                    }
+                    newsForm.appendChild(input);
+                });
+            }
+            
+            let tempFileCounter = 0; // Для создания уникальных ID для новых файлов
+            photosInput.addEventListener('change', function() {
+                const files = Array.from(this.files);
+                files.forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const tempId = `new_file_${tempFileCounter++}_${file.name}`; // Уникальный ID
+                        const div = document.createElement('div');
+                        div.className = 'preview-item';
+                        div.draggable = true;
+                        div.dataset.tempId = tempId; 
+                        div.dataset.fileName = file.name; // Сохраняем имя файла для отправки
+                        div.innerHTML = `
+                            <img src="${e.target.result}">
+                            <div class="preview-controls">
+                                <button type="button" class="del-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 16px;">×</button>
+                            </div>
+                        `;
+                        previewContainer.appendChild(div);
+                        updateOrderInputs();
+                    }
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            // Drag-and-Drop логика
+            previewContainer.addEventListener('dragstart', (e) => {
+                draggedItem = e.target.closest('.preview-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', draggedItem.innerHTML);
+                draggedItem.classList.add('dragging');
+            });
+
+            previewContainer.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                if (e.target.closest('.preview-item') && e.target.closest('.preview-item') !== draggedItem) {
+                    const targetItem = e.target.closest('.preview-item');
+                    const bounding = targetItem.getBoundingClientRect();
+                    const offset = bounding.x + (bounding.width / 2);
+                    if (e.clientX > offset) {
+                        previewContainer.insertBefore(draggedItem, targetItem.nextSibling);
+                    } else {
+                        previewContainer.insertBefore(draggedItem, targetItem);
+                    }
+                }
+            });
+
+            previewContainer.addEventListener('dragend', () => {
+                if (draggedItem) {
+                    draggedItem.classList.remove('dragging');
+                    draggedItem = null;
+                }
+                updateOrderInputs();
+            });
+
+            // Логика удаления фото
+            previewContainer.addEventListener('click', function(e) {
+                const btn = e.target.closest('.del-btn');
+                if (!btn) return;
+                
+                const item = btn.closest('.preview-item');
+                if (confirm('Удалить это фото?')) {
+                    const id = item.dataset.id;
+                    if (id) { // Если это существующее фото, отправляем его ID на удаление
+                        const delInput = document.createElement('input');
+                        delInput.type = 'hidden';
+                        delInput.name = 'delete_images[]';
+                        delInput.value = id;
+                        newsForm.appendChild(delInput);
+                    }
+                    item.remove();
+                    updateOrderInputs();
+                }
+            });
+
+            updateOrderInputs();
+        });
+    </script>
+{% endblock %}

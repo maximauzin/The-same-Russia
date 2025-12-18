@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Новости (Админ){% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+<style>
+    .plus { display: block; background: none; border: none; cursor: pointer; margin: 0 auto; margin-bottom: 20px; }
+    .new-content { position: relative; }
+</style>
+{% endblock %}
+
+{% block header_logo %}logo_red.png{% endblock %}
+{% block burger_icon %}menu_red.png{% endblock %}
+
+{% block nav_title %}
+<h1>Новости</h1>
+{% endblock %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center; margin-bottom: 20px; margin-top: 20px;">
+        <a href="{% url 'news_add' %}" class="plus">
+            <img src="{% static 'img/plus_red.png' %}" width="100" height="100" alt="Добавить новость">
+        </a>
+    </div>
+
+    <section class="new">
+        {% for item in news_list %}
+        <div class="new-content">
+            <!-- Проверка наличия картинки -->
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 316px; height: 173px; object-fit: contain; background-color: #fff; margin-right: 20px;">
+            {% else %}
+                <div style="width: 316px; height: 173px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; margin-right: 20px; border-radius: 5px;">Без обложки</div>
+            {% endif %}
+
+            <div class="new-text">
+                <a href="{% url 'news_detail' item.pk %}"><h2>{{ item.title }}</h2></a>
+                <p>{{ item.content|truncatewords:20 }}</p>
+            </div>
+            
+            <div class="admin-controls" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 10;">
+                <a href="{% url 'news_edit' item.pk %}" class="admin-icon-link">
+                    <img src="{% static 'img/edit.png' %}" alt="Редактировать" class="admin-icon">
+                </a>
+                <a href="{% url 'news_delete' item.pk %}" onclick="return confirm('Удалить?');" class="admin-icon-link">
+                    <img src="{% static 'img/close.png' %}" alt="Удалить" class="admin-icon" style="filter: invert(1) !important;"> 
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="slide">
+        <button type="button"><img src="{% static 'img/left.png' %}" alt="Стрелка влево"></button>
+        <p>1</p>
+        <button type="button"><img src="{% static 'img/rigth.png' %}" alt="Стрелка вправо"></button>
+    </section>
+{% endblock %}

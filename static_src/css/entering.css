@@ -1,0 +1,61 @@
+body {
+    font-family: "Raleway", sans-serif;
+    background-color: #E1F3FF;
+    margin: 0;
+    padding: 0;
+    padding-top: 48px;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 33px;
+}
+
+.forms {
+    border: 3px solid #669BBD;
+    border-radius: 10px;
+    margin: 0;
+    padding: 47px 60px;
+    width: 520px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-bottom: 212px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #669BBD;
+    width: 267px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+input {
+    border: none;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    color: #669BBD;
+    font-size: 24px;
+}
+
+#login , #password {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.line {
+    margin-bottom: 80px;
+}
+
+button {
+    font-size: 32px;
+    padding: 10px 30px;
+    border: 3px solid #669BBD;
+    border-radius: 10px;
+    font-weight: 400;
+    color: #669BBD;
+    background-color: white;
+}

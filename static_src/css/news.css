@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Exo 2", sans-serif;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 96px;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(120, 0, 1, 1);
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.logo {
+    margin: 0;
+    padding: 0;
+    padding-top: 38px;
+}
+
+.burger-menu img {
+    padding-top: 38px;
+}
+
+.new-content {
+    display: flex;
+    margin-bottom: 45px;
+    padding: 10px;
+    border: 3px solid rgba(120, 0, 1, 1);
+    border-radius: 10px;
+    align-items: center; /* Центрируем элементы по вертикали */
+}
+
+.new-content img {
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+    width: 316px; /* Фиксированная ширина */
+    height: 173px; /* Фиксированная высота */
+    object-fit: contain; /* Картинка полностью помещается */
+    background-color: #f0f0f0; /* Фон для пустого пространства */
+}
+
+.new-content a {
+    text-decoration: none;
+    color:rgba(0, 0, 0);
+}
+
+.new-text {
+    margin: 0;
+    padding: 0;
+}
+
+.new-text p {
+    font-size: 24px;
+    width: 630px;
+}
+
+.new {
+    padding: 0 237px;
+    margin-bottom: 142px;
+}
+
+.slide {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.slide img {
+    margin: 0;
+    padding: 0;
+    width: 54px;
+    height: 37px;
+}
+
+button:last-child {
+    margin-right: 0;
+}
+
+button {
+    margin-right: 80px;
+    margin-top: 19px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.slide p {
+    font-family: "Raleway", sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(120, 0, 1, 1);
+    margin-right: 80px;
+}
+
+/* Стили для админских форм (если понадобятся, но пока закомментирую, чтобы не мешали, или оставлю как в верстке) */
+.forms {
+    display: block;
+    margin: 0 auto;
+    width: 578px;
+    margin-bottom: 80px;
+}
+
+.forms-image {
+    width: 405px;
+    border: 3px solid #780001;
+    border-radius: 10px;
+    padding: 17px 82px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+    border: 3px solid #780001;
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    font-size: 20px;
+}

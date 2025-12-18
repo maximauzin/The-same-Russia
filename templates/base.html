@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    {# Специфичные стили страницы #}
+    {% block extra_css %}{% endblock %}
+    
+    {# Базовые стили #}
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    
+    <style>
+        /* Глобальный стиль для иконок админки */
+        .admin-icon {
+            width: 20px !important;
+            height: 20px !important;
+            min-width: 20px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            background: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            object-fit: contain !important;
+            display: block !important;
+            filter: none !important;
+        }
+        .admin-icon-link {
+            text-decoration: none !important;
+            border: none !important;
+            display: block !important;
+        }
+
+        /* Авто-растягивание текстовых полей */
+        textarea {
+            resize: none !important;
+            overflow-y: hidden !important;
+            min-height: 50px;
+            box-sizing: border-box;
+            transition: height 0.1s ease;
+        }
+
+        /* Стиль для центрированных заголовков в хедере */
+        .centered-title-wrapper {
+            text-align: center;
+            width: 100%; /* Занимает всю ширину */
+            padding-top: 38px; /* Отступ сверху, чтобы выровнять с лого */
+            box-sizing: border-box;
+        }
+        .centered-title-wrapper h1 {
+            margin: 0; /* Убираем стандартные отступы у h1 */
+            padding: 0;
+        }
+        .centered-title-wrapper p {
+            /* Стили для подзаголовка, если он есть */
+            font-size: 24px; /* Примерный размер */
+            color: #333; /* Примерный цвет */
+        }
+    </style>
+
+    <title>{% block title %}Та самая Россия{% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+    <header>
+        <nav class="main-nav">
+            <img class="logo" src="{% static 'img/' %}{% block header_logo %}logo_blue.png{% endblock %}" alt="Логотип">
+            
+            {# Заголовок теперь вынесен за пределы nav и будет центрироваться #}
+            <div class="centered-title-wrapper">
+                {% block nav_title %}{% endblock %}
+            </div>
+            
+            <section class="navbar">
+                <div class="burger-menu" id="burgerMenu">
+                    <img src="{% static 'img/' %}{% block burger_icon %}menu_blue.png{% endblock %}" width="50" height="40">
+                </div>
+                {% include "includes/nav_menu.html" %}
+            </section>
+        </nav>
+    </header>
+    {% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {# Стандартный футер #}
+    <footer class="main-footer">
+        <img class="footer-logo" src="{% static 'img/logo_white(1).png' %}" alt="Логотип футер" width="437px" height="324px">
+        <p><a href="tel:+79226588563">+7 (922) 658-85-63</a></p>
+        <p><a href="mailto:volural@gmail.com">volural@gmail.com</a></p>
+        <div class="footer-social">
+            <a href="#"><img src="{% static 'img/vk.png' %}" alt="VK"></a>
+            <a href="#"><img src="{% static 'img/tg.png' %}" alt="Telegram"></a>
+        </div>
+        <p class="adress">Юридический адрес:<br>Главный учебный корпус УрФУ:<br>620062, Свердловская область, г.Екатеринбург, ул.Мира, д.19</p>
+    </footer>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            
+            function resize() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            }
+            
+            textareas.forEach(tx => {
+                tx.style.height = 'auto';
+                tx.style.height = (tx.scrollHeight) + 'px';
+                tx.addEventListener('input', resize);
+            });
+        });
+    </script>
+</body>
+</html>

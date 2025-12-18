@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ line.title|striptags }}{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/history_line.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block content %}
+<main>
+    <h1>{{ line.title|safe }}</h1>
+    <img src="{{ line.image.url }}" width="750px" height="400px" style="object-fit: contain; background-color: #fff; margin: 0 auto; display: block; margin-bottom: 50px;">
+    
+    <p class="black">{{ line.description|linebreaksbr }}</p>
+    
+    <p><span></span></p>
+    
+    <p class="blue">Годы реализации: {{ line.years }}</p>
+    
+    <p><span></span></p>
+    
+    <p class="black">География: {{ line.location }}</p>
+</main>
+{% endblock %}

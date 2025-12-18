@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/contacts.css' %}" rel="stylesheet">
+{% endblock %}
+
+{# Настраиваем параметры стандартного хедера #}
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Контактная информация</h1>
+{% endblock %}
+
+{% block content %}
+<section class="contacts">
+    <div class="contacts-content">
+        <div class="contacts-content-text">
+            <img src="{% static 'img/geo-cont.png' %}" width="40px" height="54px">
+            <p><span>Юридический адрес:</span><br>Главный учебный корпус УрФУ: 620062, Свердловская область, г.Екатеринбург, ул.Мира, д.19</p>
+        </div>
+        <div class="contacts-content-text">
+            <img src="{% static 'img/tel-cont.png' %}">
+            <p><a href="tel:89226588563">+7 (922) 658-85-63</a></p>
+        </div>
+        <div class="contacts-content-text">
+            <img src="{% static 'img/email-cont.png' %}">
+            <p><a href="mailto:volural@gmail.com">volural@gmail.com</a></p>
+        </div>
+        <div class="social-content">
+            <img src="{% static 'img/vk-cont.png' %}" width="65px" height="65px">
+            <img src="{% static 'img/tg-cont.png' %}" width="65px" height="65px">
+        </div>
+    </div>
+    <img src="{% static 'img/map.png' %}" alt="карта" width="629px" height="587px">
+</section>
+{% endblock %}

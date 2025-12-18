@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Exo 2", sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+.main-header {
+    background-image: url('../img/big_photo.JPG');
+    background-size: cover;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: "Raleway", sans-serif;
+    font-weight: 700;
+    font-size: 96px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.title-text {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 204px;
+}
+
+.down {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-bottom: 36px;
+}
+
+.about {
+    margin: 0;
+    padding: 82px 80px;
+    padding-bottom: 0;
+    margin-bottom: 80px;
+}
+
+
+.about-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-text p {
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    margin-right: 20px;
+    width: 628px;
+}
+
+.about-text a {
+    text-decoration: none;
+    color: rgba(40, 54, 135, 1);
+}
+
+.about-text a:hover {
+    color: #C2121F;
+}
+
+.about-content img {
+    margin: 0;
+    padding: 0;
+}
+
+.news-list {
+    margin: 0;
+    padding: 0 80px;
+    display: flex;
+    gap: 19px;
+    justify-content: space-around;
+    margin-bottom: 66px;
+}
+
+.news-list-item {
+    width: 414px;
+    list-style: none;
+    padding: 40px 44px;
+    padding-bottom: 32px;
+    border: 3px solid rgba(120, 0, 1, 1);
+    border-radius: 10px;
+    text-align: center;
+    color: rgba(120, 0, 1, 1);
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+}
+
+.news-list-item img {
+    width: 326px;
+    height: 184px;
+    object-fit: contain;
+    background-color: #fff; /* Чтобы было видно границы, если картинка меньше */
+}
+
+.news-list-item p {
+    width: 337px;
+    margin: 0 auto; /* Центрируем сам блок параграфа внутри li */
+    text-align: center;
+}
+
+.news-list-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ссылка занимает всю ширину для корректного клика и центрирования */
+}
+
+.news a {
+    text-decoration: none;
+    font-size: 40px;
+    color: rgba(120, 0, 1, 1);
+}
+
+.news p {
+    text-align: center;
+}
+
+.news {
+    margin-bottom: 80px;
+}
+
+.history-list {
+    display: flex;
+    gap: 19px;
+    margin: 0;
+    padding: 0 80px;
+    justify-content: space-around;
+}
+
+.history-list-item {
+    margin: 0;
+    padding: 18px 47.5px;
+    list-style: none;
+    width: 414px;
+    border: 3px solid rgba(120, 0, 1, 1);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.history-list-item h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: red;
+}
+
+.history-list-item h3 span {
+    color:rgba(0, 0, 0);
+    font-size: 48px;
+    line-height: 40px;
+}
+
+.history-list-item p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.history {
+    margin-bottom: 80px;
+}
+
+.partner-list {
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    padding: 0 80px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.partner-list-item {
+    list-style: none;
+}
+
+.partner-list-item a {
+    filter: sepia(100%) hue-rotate(180deg) saturate(200%);
+}
+
+.partner-list-item a:hover {
+    filter: none;
+}
+
+.partner {
+    margin-bottom: 182px;
+}

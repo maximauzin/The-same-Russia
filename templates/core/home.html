@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+<header class="main-header">
+    <nav class="main-nav">
+        <img class="logo" src="{% static 'img/logo_white(1).png' %}" alt="Логотип">
+        <section class="navbar">
+            <div class="burger-menu" id="burgerMenu">
+                <img src="{% static 'img/menu.png' %}" width="50" height="40">
+            </div>
+            {% include "includes/nav_menu.html" %}
+        </section>
+    </nav>
+    <h1 class="title">Та САМАЯ Россия</h1>
+    <p class="title-text">Кластер международных исторических проектов</p>
+    <p class="down"><a href="#"><img src="{% static 'img/down.png' %}" width="54" height="26" alt="Стрелка"></a></p>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h2>О проекте</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p>Та САМАЯ Россия - это проект, направленный на сохранение и трансляцию исторического наследия Российской Федерации в формате виртуальных экскурсий из музейно-выставочных комплексов России и стран СНГ</p>
+            <p><a href="{% url 'team' %}">Команда проекта</a></p>
+        </div>
+        <img src="{% static 'img/photo.png' %}" alt="Фото проекта" width="630" height="426">
+    </div>
+</section>
+
+<section class="news">
+    <h2>Новости</h2>
+    <ul class="news-list">
+        {% for item in news_list %}
+        <li class="news-list-item">
+            <a href="{% url 'news_detail' item.pk %}">
+                <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 326px; height: 184px; object-fit: contain;">
+            </a>
+            <p><a href="{% url 'news_detail' item.pk %}" style="text-decoration: none; color: inherit;">{{ item.title }}</a></p>
+            <p style="font-size: 18px;">{{ item.short_description|default:""|truncatewords:20 }}</p>
+        </li>
+        {% empty %}
+        <p>Новостей пока нет.</p>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'news' %}">Все новости</a></p>
+</section>
+
+<section class="history">
+    <h2>Исторические линии проекта</h2>
+    <ul class="history-list">
+        {% for line in history_lines %}
+        <li class="history-list-item">
+            <a href="{% url 'history_detail' line.pk %}">
+                <img src="{{ line.image.url }}" alt="{{ line.title }}" style="width: 100%; height: 200px; object-fit: contain;">
+            </a>
+            <h3><a href="{% url 'history_detail' line.pk %}" style="text-decoration: none; color: inherit;">{{ line.title|safe }}</a></h3>
+            <p>{{ line.description|truncatechars:100 }}</p>
+            <p>{{ line.years }}</p>
+            <p>{{ line.location }}</p>
+        </li>
+        {% empty %}
+        <p>Линий пока нет.</p>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="partner">
+    <h2>Партнёры</h2>
+    <ul class="partner-list">
+        {% for partner in partners %}
+        <li class="partner-list-item">
+            <a href="{{ partner.url|default:'#' }}"><img src="{{ partner.logo.url }}" alt="{{ partner.name }}"></a>
+        </li>
+        {% empty %}
+        <p>Партнеров пока нет.</p>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

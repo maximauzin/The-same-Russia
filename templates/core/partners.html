@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Партнёры{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/partner.css' %}" rel="stylesheet">
+{% endblock %}
+
+{# Настраиваем параметры стандартного хедера #}
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Партнёры</h1>
+{% endblock %}
+
+{% block content %}
+<section class="partner">
+    {% for partner in partners %}
+    <div class="partner-content">
+        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+        <p>{{ partner.name }}</p>
+    </div>
+    {% empty %}
+    <p>Партнеров пока нет.</p>
+    {% endfor %}
+</section>
+{% endblock %}

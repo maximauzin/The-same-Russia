@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Exo 2", sans-serif;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    color: rgba(40, 54, 135, 1);
+    font-size: 96px;
+    font-weight: 700;
+}
+
+.main-title {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Позволяет блоку занимать всё доступное пространство между лого и меню */
+    text-align: center;
+}
+
+.main-title h1 {
+    font-size: 64px; /* Уменьшим немного, чтобы влезало лучше */
+    margin-bottom: 10px;
+}
+
+.main-title p {
+    width: auto;
+    font-size: 24px;
+    color: rgba(40, 54, 135, 1);
+    text-align: center;
+    margin: 0;
+}
+
+.logo {
+    margin-top: 38px;
+    width: 163px;
+    height: 108px;
+}
+
+.navbar {
+    margin-top: 38px;
+}
+
+.team-list {
+    margin: 0;
+    padding: 0 208px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем карточки участников */
+    margin-bottom: 167px;
+    row-gap: 42px;
+    column-gap: 60px;
+}
+
+.team-list-item {
+    border: 3px solid rgba(102, 155, 189, 1);
+    box-shadow: 9px 9px 12px 0px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    padding: 40px 41px;
+    border-radius: 10px;
+    width: 235px;
+    list-style: none;
+    text-align: center;
+}
+
+.team-photo {
+    border: 3px solid rgba(102, 155, 189, 1);
+    border-radius: 84px;
+    padding: 7px;
+    margin: 0;
+    margin-bottom: 4px;
+    width: 150px; /* Фиксированный размер для фото */
+    height: 150px;
+    object-fit: cover;
+}
+
+.team-list-item h3 {
+    color: rgba(40, 54, 135, 1);
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.post {
+    color: rgba(102, 155, 189, 1);
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.post-about {
+    color: rgba(102, 155, 189, 1);
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.forms {
+    display: block;
+    margin: 0 auto;
+    width: 927px;
+    padding: 30px;
+    margin-bottom: 52px;
+    margin-top: -50px;
+}
+
+.forms-image {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #669BBD;
+    border-radius: 125px;
+    width: 185px;
+    height: 185px;
+    margin-bottom: 20px;
+}
+
+.forms-name {
+    display: flex;
+    gap: 37px;
+    justify-content: space-between;
+}
+
+.forms-post {
+    display: flex;
+    gap: 37px;
+}
+
+.forms label{
+    color: #283687;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.forms input {
+    width: 264px;
+    margin-bottom: 42px;
+    border: 3px solid #669BBD;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.forms-image input {
+    border: none;
+}
+
+.forms-reference input {
+    width: 565px;
+}
+
+.delete {
+    color: #780001;
+    font-size: 24px;
+    border: 3px solid #780001;
+    border-radius: 10px;
+    background-color: #F7ADAE;
+    width: 256px;
+    padding: 20px;
+}

@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+main {
+    padding: 0 80px;
+}
+
+h1 {
+    font-family: "Exo 2", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    margin-bottom: 80px;
+    margin-top: -140px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 91px;
+}
+
+button {
+    padding: 5px;
+    margin-right: 90px;
+    background-color: transparent;
+    border: none;
+}
+
+button:last-child {
+    margin-right: 0;
+    margin-left: 90px;
+}
+
+p {
+    font-size: 32px;
+    margin-bottom: 51px;
+}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Исторические линии{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/history_lines.css' %}" rel="stylesheet">
+{% endblock %}
+
+{# Настраиваем параметры стандартного хедера #}
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<h1>Исторические линии</h1>
+{% endblock %}
+
+{% block content %}
+    {% for line in lines %}
+        <section class="history-lines">
+            <div class="history-lines-content {% if forloop.counter|divisibleby:2 %}left{% endif %}">
+                {% if not forloop.counter|divisibleby:2 %}
+                    <a href="{% url 'history_detail' line.pk %}"><img src="{{ line.image.url }}" width="250px" height="250px" alt="{{ line.title }}"></a>
+                {% endif %}
+                
+                <div class="history-lines-text">
+                    <h3><a href="{% url 'history_detail' line.pk %}" style="text-decoration: none; color: inherit;">{{ line.title }}</a></h3>
+                    <p>{{ line.description }}</p>
+                </div>
+                <a href="{% url 'history_detail' line.pk %}">Смотреть</a><img src="{% static 'img/show.png' %}" class="show" width="32px" height="32px">
+
+                {% if forloop.counter|divisibleby:2 %}
+                    <a href="{% url 'history_detail' line.pk %}"><img src="{{ line.image.url }}" width="250px" height="250px" alt="{{ line.title }}"></a>
+                {% endif %}
+            </div>
+        </section>
+        
+        {% if not forloop.last %}
+            {% if forloop.counter|divisibleby:2 %}
+                <img src="{% static 'img/volna_down.png' %}" class="volna" alt="Волна">
+            {% else %}
+                <img src="{% static 'img/volna_up.png' %}" class="volna" alt="Волна">
+            {% endif %}
+        {% endif %}
+    {% empty %}
+        <p>Линии пока не проложены.</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/team.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header_logo %}logo_blue.png{% endblock %}
+{% block burger_icon %}menu_blue.png{% endblock %}
+
+{% block nav_title %}
+<section class="main-title">
+    <h1>Команда проекта</h1>
+    <p>{{ title }}</p>
+</section>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="forms">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="forms-image" style="position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; cursor: pointer; background-color: #f0f0f0;">
+                {# Скрытый инпут, растянутый на весь блок #}
+                <input type="file" name="photo" id="id_photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2;">
+                
+                {# Превью текущего фото #}
+                {% if form.instance.photo %}
+                    <img src="{{ form.instance.photo.url }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                {% else %}
+                    {# Заглушка, если фото нет #}
+                    <span style="color: #669BBD; font-size: 14px; text-align: center;">Нажмите,<br>чтобы добавить<br>фото</span>
+                {% endif %}
+                
+                {# Иконка или текст поверх при наведении (опционально) #}
+            </div>
+            {# Небольшая подсказка под фото #}
+            <div style="text-align: center; color: #669BBD; margin-bottom: 20px; font-size: 14px;">Нажмите на круг для выбора фото</div>
+            <div class="forms-name">
+                <div>
+                    <label for="second-name">Фамилия</label>
+                    {{ form.last_name }}
+                </div>
+                <div>
+                    <label for="first-name">Имя</label>
+                    {{ form.first_name }}
+                </div>
+                <div>
+                    <label for="third-name">Отчество</label>
+                    {{ form.middle_name }}
+                </div>
+            </div>
+            <div class="forms-post">
+                <div>
+                    <label for="royle">Роль</label>
+                    {{ form.role }}
+                </div>
+                <div>
+                    <label for="post">Должность</label>
+                    {{ form.position }}
+                </div>
+            </div>
+            <div class="forms-reference">
+                <label for="reference">Ссылка на ВКонтакте</label>
+                {{ form.vk_link }}
+            </div>
+            
+            <div class="button" style="margin-top: 50px;">
+                <a href="{% url 'team' %}" class="btn-reset" style="text-decoration: none;">Отмена</a>
+                <button type="submit" class="btn-submit">{% if form.instance.pk %}Сохранить{% else %}Добавить участника{% endif %}</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

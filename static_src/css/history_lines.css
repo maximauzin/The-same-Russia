@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Exo 2", sans-serif;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0);
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 75px;
+    font-weight: 700;
+    color: rgba(40, 54, 135, 1);
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 23px;
+}
+
+.logo {
+    margin-top: 38px;
+    width: 163px;
+    height: 108px;
+}
+
+.navbar {
+    margin-top: 38px;
+}
+
+.history-lines {
+    margin: 0;
+    padding: 0 147px;
+}
+
+.history-lines:last-child {
+    margin-bottom: 138px; 
+}
+
+.history-lines-content {
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid rgba(102, 155, 189, 1);
+    border-radius: 10px;
+}
+
+.history-lines-content img {
+    margin-right: 33px;
+}
+
+.history-lines-content img:last-child {
+    margin-right: 0;
+}
+
+.history-lines-text {
+    margin-right: 32px;
+}
+
+.history-lines-text p {
+    font-family: "Raleway", sans-serif;
+    font-size: 24px;
+}
+
+.history-lines-content a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 24px;
+    color: rgba(102, 155, 189, 1);
+    margin-top: 9px;
+}
+
+.show {
+    margin: 0;
+    padding: 10px;
+}
+
+.volna {
+    margin: 80px 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
+
+.forms-content {
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid #669BBD;
+    border-radius: 10px;
+    width: 958px;
+    margin-bottom: 80px;
+}
+
+.forms-content #image {
+    width: 240px;
+    height: 240px;
+    border: 3px solid #283687;
+    border-radius: 10px;
+    margin-right: 38px;
+}
+
+.forms-content textarea {
+    border: 3px solid #283687;
+    border-radius: 10px;
+    font-size: 24px;
+    width: 620px;
+    padding: 40px;
+    resize: none;
+}
+
+.forms-image {
+    display: flex;
+    margin-bottom: 33px;
+}
+
+#rutube {
+    border: 3px solid #283687;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 0;
+    padding: 13px 29px;
+    width: 898px;
+}
+
+.line {
+    margin: 80px 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+}
+
+.forms-content-about {
+    display: block;
+    margin: 0 auto;
+    width: 824px;
+    padding: 37px;
+    text-align: center;
+    border: 3px solid #669BBD;
+    border-radius: 10px;
+    margin-bottom: 126px;
+}
+
+.forms-content-about #image {
+    width: 535px;
+    height: 282px;
+    border: 3px solid #283687;
+    border-radius: 10px;
+    margin-bottom: 26px;
+}
+
+.forms-content-about textarea {
+    width: 764px;
+    font-size: 20px;
+    border: 3px solid #283687;
+    border-radius: 10px;
+    resize: none;
+}
